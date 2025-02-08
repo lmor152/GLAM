@@ -21,7 +21,7 @@ jobs:
 
     - name: Install build tools
       run: |
-        pip install setuptools wheel twine pytest
+        pip install setuptools wheel twine pytest build
         
     - name: Install dependencies
       run: |
