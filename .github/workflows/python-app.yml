@@ -30,6 +30,7 @@ jobs:
 
     - name: Run tests with pytest
       run: |
+        pip install -e .
         pytest
 
     - name: Build the package
