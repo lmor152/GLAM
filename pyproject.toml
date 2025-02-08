@@ -14,7 +14,7 @@ requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
 keywords = ["Geocoding", "New Zealand", "Address Matching"]
 authors = [{ name = "Liam Morris"}]
-dependencies = ["torch", "scikit-learn"]
+dependencies = ["torch", "scikit-learn", 'requests', 'unidecode', 'pandas', 'tqdm']
 
 # [project.optional-dependencies]
 # all = ["rapidfuzz", "scipy", 'geopandas']

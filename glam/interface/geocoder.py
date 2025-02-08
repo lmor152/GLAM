@@ -7,12 +7,12 @@ from glam.logs import setup_logger
 # matching
 from glam.matching.base_matcher import BaseMatcher
 from glam.matching.matched_address import MatchedAddress, MatchedAddresses
-from glam.matching.matchers import matchers
+from glam.matching.matchers import get_matcher
 
 # parsing
 from glam.parsing.base_parser import BaseParser
 from glam.parsing.parsed_address import ParsedAddresses
-from glam.parsing.parsers import parsers
+from glam.parsing.parsers import get_parser
 
 # misc
 from glam.preprocessing.preprocessor import PreProcessor
@@ -101,8 +101,8 @@ class Geocoder:
         if parser_options is None:
             parser_options = dict()
 
-        self.matcher = self._set_matcher(matcher, **matcher_options)
-        self.parser = self._set_parser(parser, **parser_options)
+        self.matcher = get_matcher(matcher)(self.data_dir, **matcher_options)
+        self.parser = get_parser(parser)(self.data_dir, **parser_options)
 
         self._check_parser_matcher_combination()
 
