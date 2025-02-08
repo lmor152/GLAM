@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools", "wheel", 'torch', 'scikit-learn']
+build-backend = "setuptools.build_meta"
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[project]
+name = "glam" 
+version = "0.4.0" 
+description = "Free offline geocoding for NZ addresses"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.txt" }
+keywords = ["Geocoding", "New Zealand", "Address Matching"]
+authors = [{ name = "Liam Morris"}]
+dependencies = ["torch", "scikit-learn"]
+
+# [project.optional-dependencies]
+# all = ["rapidfuzz", "scipy", 'geopandas']
+
+[project.urls]
+"Homepage" = "https://github.com/lmor152/glam"
+"Bug Reports" = "https://github.com/lmor152/glam/issues"
+
+[tool.setuptools]
+package-data = { "glam" = ["parsing/rnn/model.pth", "matching/embedding/model.pth", "matching/embedding/vocab.csv"] }
+include-package-data = true
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["glam*"]
+
