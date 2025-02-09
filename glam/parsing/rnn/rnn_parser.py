@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import final, override
+import platform
 
 import torch
 
@@ -36,7 +37,7 @@ class RNNParser(BaseParser):
     def get_device(self) -> torch.device:
         if torch.cuda.is_available():
             device = torch.device("cuda")
-        elif torch.backends.mps.is_available():
+        elif platform.system() == "Darwin" and torch.backends.mps.is_available():
             device = torch.device("mps")
         else:
             device = torch.device("cpu")
