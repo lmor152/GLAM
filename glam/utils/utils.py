@@ -3,7 +3,6 @@ import zipfile
 from pathlib import Path
 
 import numpy as np
-import pkg_resources
 import requests
 from tqdm import tqdm
 
@@ -62,43 +61,43 @@ def build_address(
     return addy
 
 
-def check_package_dependency(package_name, desired_version=None):
-    """
-    desired_version should be of format '==1.0.0'
-    """
+# def check_package_dependency(package_name, desired_version=None):
+#     """
+#     desired_version should be of format '==1.0.0'
+#     """
 
-    try:
-        if desired_version:
-            pkg_resources.require(f"{package_name}{desired_version}")
-        else:
-            pkg_resources.require(package_name)
+#     try:
+#         if desired_version:
+#             pkg_resources.require(f"{package_name}{desired_version}")
+#         else:
+#             pkg_resources.require(package_name)
 
-    except pkg_resources.DistributionNotFound:
-        if desired_version:
-            raise RuntimeError(
-                f"Missing optional dependency {package_name}{desired_version}"
-            )
-        raise RuntimeError(f"Missing optional dependency {package_name}")
-    except pkg_resources.VersionConflict:
-        print(
-            f"{package_name} version {desired_version} is installed, but a different version is present. Version should be {desired_version}"
-        )
+#     except pkg_resources.DistributionNotFound:
+#         if desired_version:
+#             raise RuntimeError(
+#                 f"Missing optional dependency {package_name}{desired_version}"
+#             )
+#         raise RuntimeError(f"Missing optional dependency {package_name}")
+#     except pkg_resources.VersionConflict:
+#         print(
+#             f"{package_name} version {desired_version} is installed, but a different version is present. Version should be {desired_version}"
+#         )
 
-    # if package in sys.modules:
-    #     return None
+# if package in sys.modules:
+#     return None
 
-    # found = sys.modules.get(package,None)
-    # if found is None:
-    #     if version is not None:
-    #         raise ValueError(f"Missing optional dependency: {package}=={version}")
-    #     else:
-    #         raise ValueError(f"Missing optional dependency: {package}")
+# found = sys.modules.get(package,None)
+# if found is None:
+#     if version is not None:
+#         raise ValueError(f"Missing optional dependency: {package}=={version}")
+#     else:
+#         raise ValueError(f"Missing optional dependency: {package}")
 
-    # if version is not None:
-    #     if version != found.__version__:
-    #         raise ValueError(f"Missing optional dependency: {package}=={version}")
+# if version is not None:
+#     if version != found.__version__:
+#         raise ValueError(f"Missing optional dependency: {package}=={version}")
 
-    # return None
+# return None
 
 
 def download_dependencies(deps_directory: str) -> None:
