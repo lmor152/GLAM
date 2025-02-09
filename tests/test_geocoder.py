@@ -1,7 +1,7 @@
 def test_geocoder() -> None:
     from glam import Geocoder
 
-    gc = Geocoder("test_deps")
+    gc = Geocoder("tests/test_deps")
     res = gc.parse_addresses(["16 Western Springs Road, Morningside, Auckland 1021"])[0]
 
     assert res.street_name.upper() == "WESTERN SPRINGS ROAD"
