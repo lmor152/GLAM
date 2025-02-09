@@ -131,7 +131,7 @@ class EmbeddingMatcher(BaseMatcher):
 
         _ = address_embedding_model.to(self.device)
         _ = address_embedding_model.load_state_dict(
-            torch.load(model_path, weights_only=True)  # pyright: ignore[reportUnknownMemberType, reportAny]
+            torch.load(model_path, weights_only=True, map_location="cpu")  # pyright: ignore[reportUnknownMemberType, reportAny]
         )
         address_embedding_model.eval()
         return address_embedding_model

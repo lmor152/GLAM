@@ -49,7 +49,7 @@ class RNNParser(BaseParser):
     def load_model(self, model_path: Path) -> AddressParser:
         _ = address_parser_model.to(self.device)
         _ = address_parser_model.load_state_dict(
-            torch.load(model_path, weights_only=True) 
+            torch.load(model_path, weights_only=True, map_location='cpu') 
         )
 
         return address_parser_model
